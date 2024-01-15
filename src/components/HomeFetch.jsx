@@ -50,7 +50,7 @@ const ZinesPage = () => {
             showAdd={showAddZine}
           />
           {showAddZine && <AddZines onAdd={addZine} />}
-          <h2>The zine place</h2>
+          <h2>Zines</h2>
         </div>
       </div>
       <Zines zines={zines} />
