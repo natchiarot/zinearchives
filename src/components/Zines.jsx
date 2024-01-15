@@ -2,8 +2,6 @@ import ImageSlider from "./ImageSlider";
 
 const Zines = ({ zines }) => {
   const containerStyles = {
-    // width: "360px",
-    // height: "470px",
     margin: "0 auto",
     padding: "1.5em",
   };

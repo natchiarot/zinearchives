@@ -1,7 +1,9 @@
 import { useState, useEffect } from "react";
+import useMediaQuery from "react-responsive";
 
 const ImageSlider = ({ images, children, onImageClick, containerStyles }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const isMobile = useMediaQuery({ maxWidth: 768 });
 
   useEffect(() => {
     if (currentIndex < 0) {
@@ -13,7 +15,7 @@ const ImageSlider = ({ images, children, onImageClick, containerStyles }) => {
 
   const sliderStyles = {
     position: "relative",
-    maxWidth: "400px",
+    width: "400px",
     ...containerStyles,
   };
 
@@ -35,6 +37,36 @@ const ImageSlider = ({ images, children, onImageClick, containerStyles }) => {
     maxWidth: "100%",
     alignContent: "center",
     margin: "0 auto",
+  };
+
+  const mediaQuery = "@media (max-width: 768px)";
+
+  const responsiveStyles = {
+    [mediaQuery]: {
+      sliderStyles: {
+        maxWidth: "50%", // Adjust the maximum width for smaller screens
+        padding: "1em", // Adjust padding for smaller screens
+      },
+      slideStyles: {
+        flexDirection: "column", // Adjust flex direction for smaller screens
+        borderRadius: "0", // Adjust border-radius for smaller screens
+        border: "solid 3px", // Adjust border for smaller screens
+        borderColor: "rgb(30, 30, 30)", // Adjust border color for smaller screens
+        padding: "1em", // Adjust padding for smaller screens
+      },
+      containerStyles: {
+        padding: "1em", // Adjust padding for smaller screens
+      },
+    },
+  };
+
+  const mergedStyles = {
+    ...sliderStyles,
+    ...responsiveStyles.sliderStyles,
+    ...slideStyles,
+    ...responsiveStyles.slideStyles,
+    ...containerStyles,
+    ...responsiveStyles.containerStyles,
   };
 
   const leftArrowStyles = {
@@ -99,14 +131,25 @@ const ImageSlider = ({ images, children, onImageClick, containerStyles }) => {
   };
 
   return (
-    <div style={sliderStyles}>
+    <div
+      style={{
+        ...sliderStyles,
+        ...(isMobile && sliderStyles.mobile),
+      }}
+    >
       <div style={leftArrowStyles} onClick={goToPrevious}>
         &lt;
       </div>
       <div style={rightArrowStyles} onClick={goToNext}>
         &gt;
       </div>
-      <div style={slideStyles} onClick={onImageClick}>
+      <div
+        style={{
+          ...slideStyles,
+          ...(isMobile && slideStyles.mobile),
+        }}
+        onClick={onImageClick}
+      >
         <img
           src={images[currentIndex].data}
           alt={`Slide ${currentIndex}`}
