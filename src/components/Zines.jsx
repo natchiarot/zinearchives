@@ -11,15 +11,19 @@ const Zines = ({ zines }) => {
       <div className="zine-box">
         {zines.map((zine, index) => (
           <div key={index}>
-            <h2 id={zine.title}>{zine.title}</h2>
+            <div className="zine-info">
+              <h2 id={zine.title}>{zine.title}</h2>
+            </div>
             {Array.isArray(zine.images) && (
               <ImageSlider
                 images={zine.images}
                 containerStyles={containerStyles}
               ></ImageSlider>
             )}
-            <h3>Made By: {zine.author}</h3>
-            <p>Description: {zine.description}</p>
+            <div className="zine-info">
+              <h3>Made By: {zine.author}</h3>
+              <p>Description: {zine.description}</p>
+            </div>
             <br />
             <br />
           </div>

@@ -25,9 +25,9 @@
 
 @media (max-width: 768px) {
   .wrapper .sidebar {
-    width: 100%; /* Adjust the width for smaller screens */
-    position: static; /* Remove fixed positioning for smaller screens */
-    margin-bottom: 20px; /* Adjust spacing for smaller screens */
+    width: 100%;
+    position: static;
+    margin-bottom: 20px;
   }
 }
 
@@ -72,7 +72,7 @@
 
 @media (max-width: 768px) {
   .container {
-    margin: 0 10px; /* Adjust margin for smaller screens */
+    margin: 0 10px;
   }
 }
 
@@ -134,7 +134,13 @@
 
 @media (max-width: 768px) {
   .main-header {
-    margin-left: 0; /* Adjust margin for smaller screens */
+    margin-left: 0;
+    white-space: normal;
+    word-break: break-word;
+  }
+
+  .zine-info {
+    margin-left: -200px;
   }
 }
 
@@ -145,4 +151,17 @@
 
 .main-header img {
   max-width: 120px;
+}
+
+@media (max-width: 768px) {
+  .media-box {
+    display: flex;
+    justify-content: center;
+    margin-right: 100px;
+    margin-left: -100px;
+  }
+
+  .media-box img {
+    max-width: 100%;
+  }
 }
