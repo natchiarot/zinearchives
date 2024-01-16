@@ -23,17 +23,22 @@ const ZinesPage = () => {
   }, []);
 
   const fetchZines = async () => {
-    const res = await fetch("http://localhost:7000/zines");
+    const res = await fetch(
+      "https://natchiarot.github.io/zinearchives/db.json"
+    );
     const data = await res.json();
     return data;
   };
 
   const addZine = async (zine) => {
-    const res = await fetch("http://localhost:7000/zines", {
-      method: "POST",
-      headers: { "Content-type": "application/json" },
-      body: JSON.stringify(zine),
-    });
+    const res = await fetch(
+      "https://natchiarot.github.io/zinearchives/db.json",
+      {
+        method: "POST",
+        headers: { "Content-type": "application/json" },
+        body: JSON.stringify(zine),
+      }
+    );
 
     const data = await res.json();
     setZines([...zines, data]);
